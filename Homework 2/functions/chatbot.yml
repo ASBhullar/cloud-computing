@@ -1,0 +1,12 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  chatbot:
+    lang: python
+    handler: ./chatbot
+    image: amarjot/chatbot
+    labels:
+      com.openfaas.scale.min: "1"  # Minimum number of function replicas
+      com.openfaas.scale.max: "10" # Maximum number of function replicas
+      com.openfaas.scale.factor: "20" # Optional: Scale up by 20% per request
